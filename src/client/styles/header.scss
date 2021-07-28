@@ -1,0 +1,36 @@
+a:link{
+    text-decoration: none;
+}
+    
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding: 45px;
+    align-items: center;
+    justify-content: space-between;
+}
+    
+.title {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+}
+    
+.pages {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: center;
+    padding: 1px 8px;
+    }
+ 
+.page-items {
+    padding: 8px;
+}
+    
+#insta {
+    font-size: 22px;
+}

@@ -1,0 +1,67 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%;
+    padding: 20px;
+}
+
+.footer-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.icon-items {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#text-box {
+    padding: 10px;
+    width: 200px;
+    border: lightgray;
+    display: inline-block;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+#sign-up {
+    padding: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    box-shadow: 0 8px 6px -6px black;
+    font-family: sans-serif;
+}
+
+.club {
+    font-style: italic;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-weight: 900;
+    color: purple;
+}
+
+.travel {
+    align-self: center;
+    color: #00008b;
+    text-decoration: underline;
+}
+
+.footer-title {
+    color: #00008b;
+    padding: 20px;
+}
+
+.icons {
+    font-size: 1.5em;
+    align-self: center;
+    display: flex;
+}
+
+.subscribe {
+    display: flex;
+    flex-direction: column;
+}

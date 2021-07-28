@@ -1,0 +1,30 @@
+.content-blog,
+.content-about {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    border: 0.1px solid white;
+}
+
+.snaps, .avt {
+  width: 100%;
+}
+
+#abt-author {
+    border: 0.1px solid grey;
+    box-shadow: 0 8px 6px -6px black;
+} 
+
+.next,
+.prev {
+    text-decoration: underline;
+}
+
+.next {
+    float: right;
+}
+
+.prev {
+    float: left;
+}
