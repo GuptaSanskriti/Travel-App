@@ -25,46 +25,44 @@ const performAction = async (e) => {
             }else{
             console.log(`city name: ${query}`);
             getDatafromGeonames(query)
-                .then((data) => {
-                    return postData('http://localhost:8081/geonames', { 
+                .then(async (data) => {
+                    const response = await
+                    postData('http://localhost:8081/geonames', { 
                         latitude: data.geonames[0].lat,
                         longitude: data.geonames[0].lng,
                         country: data.geonames[0].countryName,
                         city: data.geonames[0].name,
-                    })
-                    .then((response) =>{
+                    });
                         let lat = response[response.length - 1].latitude;
                         let lng = response[response.length - 1].longitude;
-                        return { lat, lng };
-                 })
-                .then(({lat, lng}) => {
-                    return getDatafromWeatherbit(lat, lng)
-                })
+                       const { lat: lat_1, lng: lng_1 } = { lat, lng };
+
+           getDatafromWeatherbit(lat_1, lng_1)
                 .then((weatherData) => {
-                    return postData('http://localhost:8081/weatherbit', {
+                        postData('http://localhost:8081/weatherbit', {
                         high: weatherData.data[0].high_temp,
                         low: weatherData.data[0].low_temp,
                         description: weatherData.data[0].weather.description,
                     })
-                 })
-              })
               .then(() => {
-                  return getDatafromPixabay(query)
-              })
+                       getDatafromPixabay(query)
               .then((imagedata) => {
-                  return postData('http://localhost:8081/pixabay', {
+                       postData('http://localhost:8081/pixabay', {
                         image: imagedata.hits[0].webformatURL,
                   })
-              })
-              .then(
+              .then(() => {
+                  warning.classList.remove('show');  
                   updateUI()
-              )
-              .then(
-                  document.getElementById('generate').addEventListener('click', changeUI)
-              )
-              warning.classList.remove('show');
-            }
-        };
+              .then(() => {
+                  document.getElementById('generate').addEventListener('click', changeUI);
+              });
+            });
+          });
+       });
+    });
+  });
+ }
+}
     
 //get data from geonames
 const getDatafromGeonames = async (query) => {
@@ -127,8 +125,8 @@ const updateUI = async () => {
     try {
         const allData = await request.json();
         console.log(allData);
-        document.querySelector('.place').innerHTML = `Your beautiful destination is ${allData[allData.length - 5].city},
-        ${allData[allData.length - 5].country}.`;
+        document.querySelector('.place').innerHTML = `Your beautiful destination is ${allData[allData.length - 3].city},
+        ${allData[allData.length - 3].country}.`;
         document.querySelector('.tripDetails').innerHTML = `The Weather Forecast: <br> ${allData[allData.length - 2].description} <br>
                                                High: ${allData[allData.length - 2].high} °C 
                                                Low: ${allData[allData.length - 2].low} °C`;
