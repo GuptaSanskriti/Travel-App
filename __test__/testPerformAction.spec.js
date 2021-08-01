@@ -3,7 +3,7 @@
  */
 import { performAction } from "../src/client/js/app"
 
-require("babel-polyfill");
+//require("babel-polyfill");
 
 test('Perform Action', () => {
     expect(performAction).toBeDefined();
